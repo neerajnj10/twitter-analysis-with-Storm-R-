@@ -16,3 +16,8 @@ R is an extremely valuable language and a gift to the world of Big Data. Apart f
 > **sentiments**
 
 ![sentiments](https://cloud.githubusercontent.com/assets/11197322/8509054/c06ef02c-225a-11e5-9bf7-d03f96eb8445.png?raw=true "sentiments")
+
+
+> **polarity proportion**
+
+![polarity](https://cloud.githubusercontent.com/assets/11197322/8509055/c583e590-225a-11e5-99ff-cedfd8e2d4d4.png?raw=true "polarity")
