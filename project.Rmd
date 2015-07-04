@@ -1,4 +1,4 @@
-**this is code in simple markdown**
+##this is the code for the project in simple markdown
 
 ```{r install.packages, eval = FALSE}
 
