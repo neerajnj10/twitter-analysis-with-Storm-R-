@@ -1,5 +1,9 @@
+**this is code in simple markdown**
 
 ```{r install.packages, eval = FALSE}
+
+*install the packages*
+
 install.packages("ggplot2")  
 install.packages("RStorm")  
 install.packages("twitteR")  
@@ -75,7 +79,7 @@ colnames(tweet.df)
 dim(tweet.df)
 ```
 
-Note that `searchTwitter()` will put the most recent tweets at the top of the `data.frame`, so we'll want to reverse it to simulate tweets arriving in realtime.
+> `searchTwitter()` will put the most recent tweets at the top of the `data.frame`, so we'll want to reverse it to simulate tweets arriving in realtime.
 
 ```{r reorder.df}
 tweet.df <- tweet.df[order(tweet.df$created),]
@@ -84,14 +88,14 @@ tweet.df <- tweet.df[order(tweet.df$created),]
 ## Setting up the Topology
 Now that we have a `data.frame` of tweets, we can use these to simulate an `RStorm` topology.  
 
-Bolt | Purpose
+Bolt | Uses
 -----|-------------
 `track.rate()` | Calculate and track tweets per minute over time
-`get.text()` | Extract text from tweet
+`get.text()` | Extract the texts from tweet
 `clean.text()` | Clean special characters, links, punctuation, etc.
-`strip.stopwords()` | Clean conjunctions, prepositions, etc.
-`get.word.counts()` | Create and update word counts
-`get.polarity()` | Classify polarity of a tweet
+`strip.stopwords()` | Clean conjunctions, prepositions, etc. (handy)
+`get.word.counts()` | Create and update word counts (as it arrives)
+`get.polarity()` | Classify polarity of a tweet (negative, positive , neutral)
 `track.polarity()` | Track percentage of positive/negative/neutral tweets over time
 `store.words.polarity()` | Store words for each polarity level
 
@@ -108,7 +112,8 @@ We will need the following hashes and trackers to calculate and track our result
 `polar.words.df` | Hash | Keep track of words associated with each polarity
 
 ### The Spout
-The `data.frame` `tweet.df` will be used to simulate tweets arriving in realtime.  In `RStorm`, we start the topology by specifying the spout.
+The `data.frame` `tweet.df` will be used to simulate tweets arriving in realtime.  
+In `RStorm`, we start the topology by specifying the spout.
 
 ```{r start.topo}
 topo <- Topology(tweet.df)
@@ -119,7 +124,7 @@ options(stringsAsFactors = FALSE)
 ```
 
 #### Bolt 1: `track.rate()`
-Our first bolt, `track.rate()` calculates the tweets per minute (tpm) every time we see a new tweet.  
+`track.rate()` calculates the tweets per minute (tpm) for a new tweet.  
 
 Once we've tracked the tpm rate, we simply close the function, since no bolts are downstream.  Finally, we create a bolt from the function which listens to the spout and add it to the topology.
 
@@ -161,7 +166,7 @@ topo <- AddBolt(topo, Bolt(get.text, listen = 0, boltID = 2))
 ```
 
 #### Bolt 3: `clean.text()`
-Our third bolt takes the raw text from `get.text()`, converts it to a more flexible text encoding, forces it to lower case, and strips it of hyperlinks, possesives, special characters, punctuation, and extra whitespace.
+this takes raw text from `get.text()`, converts it to a more flexible text encoding, forces it to lower case, and strips it of hyperlinks, possesives, special characters, punctuation, and extra whitespace.
 
 After the text is clean, we emit the clean text and continue passing the time stamp down the stream.
 
@@ -204,7 +209,7 @@ topo <- AddBolt(topo, Bolt(strip.stopwords, listen = 3, boltID = 4))
 ```
 
 #### Bolt 5: `get.word.counts()`
-The fifth bolt does as its name suggests: counts the number of times each word appears.  
+counts the number of times each word appears.  
 Since this is the end of a stream branch, we don't need to emit anything.
 
 ```{r get.word.counts}
@@ -230,11 +235,12 @@ topo <- AddBolt(topo, Bolt(get.word.counts, listen = 4, boltID = 5))
 Bolt 6, `get.polarity()` listens to `strip.stopwords()`.  The purpose of this bolt is to classify the polarity of a given tweet.  The `classify_polarity()` function implements a Naive-Bayes classifier which uses the polarity of the words in the tweet to predict the polarity of the entire tweet.  For example,
 
 ```{r sentiment.sample}
+##download the archived sentiment package and install and load it.
 download.file("http://cran.r-project.org/src/contrib/Archive/sentiment/sentiment_0.2.tar.gz", "sentiment.tar.gz")
 install.packages("sentiment.tar.gz", repos=NULL, type="source")
 library(sentiment)
-classify_polarity("I love Statistics")
-classify_polarity("I hate Statistics")
+classify_polarity("I love data")
+classify_polarity("I hate data")
 ```
 
 For the given tweet, we classify the polarity and pass the text, time stamp, and polarity down the stream.
@@ -286,7 +292,7 @@ topo <- AddBolt(topo, Bolt(track.polarity, listen = 6, boltID = 7))
 
 #### Bolt 8: `store.words.polarity()`
 The function works similar to `get.word.counts()`, with one extra
-caveaut. Instead of having an $n \times 1$ data.frame, we have an `n
+caveat. Instead of having an $n \times 1$ data.frame, we have an `n
 \times 3` data.frame, with a column for each polarity. In natural
 language processing, we would call this a Term Document Matrix (TDM).
 The TDM has a column for each "document" we are examining, in this
