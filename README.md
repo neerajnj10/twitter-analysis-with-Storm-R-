@@ -18,17 +18,17 @@ R is an extremely valuable language and a gift to the world of Big Data. Apart f
 
 > **sentiments**
 
-![sentiments](https://cloud.githubusercontent.com/assets/11197322/8509054/c06ef02c-225a-11e5-9bf7-d03f96eb8445.png?raw=true "sentiments")
+![sentiments](https://cloud.githubusercontent.com/assets/11197322/8513103/cd535432-232b-11e5-838e-58f2ddcdfddd.png?raw=true "sentiments")
 
 
 > **tweets per minute**
 
-![tweets](https://cloud.githubusercontent.com/assets/11197322/8509055/c583e590-225a-11e5-99ff-cedfd8e2d4d4.png?raw=true "tweets")
+![tweets](https://cloud.githubusercontent.com/assets/11197322/8513105/d7be8b6c-232b-11e5-8f3b-ed023ffe2241.png?raw=true "tweets")
 
 
 > **polarity proportions**
 
-![polarity](https://cloud.githubusercontent.com/assets/11197322/8509056/c8cc494a-225a-11e5-9796-dddd55abaf4d.png?raw=true "polarity")
+![polarity](https://cloud.githubusercontent.com/assets/11197322/8513104/d374ef2e-232b-11e5-825f-9a0d5fd7413d.png?raw=true "polarity")
 
 
 > **median over time**
