@@ -1,4 +1,16 @@
-##this is the code for the project in simple markdown
+#this is the code for the project in simple markdown
+streaming framework for analyzing tweets for a given topic
+
+We will:
+
+1. Keep track and visualize (with a wordcloud) common terms associated
+   with the topic.
+2. Classify and visualize the polarity (positive/negative/neutral) of
+   tweets and visual common words in each class.
+3. Keep track of the proportion of positive tweets as time goes on.
+4. Keep track of median values for number of unique words in the arriving tweets 
+   over a given time period.
+5. Visualize and report the rate of tweets in a given time frame.
 
 ```{r install.packages, eval = FALSE}
 
@@ -16,8 +28,8 @@ install.packages("RColorBrewer")
 ```{r install.sentiment, eval = FALSE}
 install.packages("tm")
 #### choose either of three options
-install.packages("http://www.omegahat.org/Rstem/Rstem_0.4-1.tar.gz",
-	             repo = NULL, type = "source")
+#install.packages("http://www.omegahat.org/Rstem/Rstem_0.4-1.tar.gz",
+ #              repo = NULL, type = "source")
 
 
 install.packages("Rstem")
@@ -59,10 +71,10 @@ secret, and tokens:
 
 
 ```{r Authorize, eval = FALSE}
-consumer.key <- ''
-consumer.secret <- ''
-access.token <- ''
-access.secret <- ''
+consumer.key <- '**'
+consumer.secret <- '**'
+access.token <- '**'
+access.secret <- '**'
 setup_twitter_oauth(consumer.key, consumer.secret,
                     access.token, access.secret)
 ```
@@ -414,3 +426,4 @@ ggplot(uniques.df, aes(x= t.stamp, y=uniques))+ geom_point(shape=5, color="darkg
 
 ```{r stringsAsFactors_TRUE}
 options(stringsAsFactors = TRUE)
+```
