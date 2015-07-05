@@ -5,7 +5,10 @@ Prototype of Storm using R, (which then can be passed for production)
 
 > Realtime Computation with RStorm and twitteR
 
-R is an extremely valuable language and a gift to the world of Big Data. Apart from allowing high level/advanced analysis of various different types of data, it provides the ability to work from within the comfort of the environment to interface, interact with various different Big data tools such Storm and hence can easily scale and overcome its memory limitations. 
+R is an extremely valuable language for Big Data, along side Python. check this out for more. ![RvsPython](http://blog.datacamp.com/wp-content/uploads/2015/05/R-vs-Python-216-2.png?raw=true "RvsPython")
+Apart from allowing high level/advanced analysis of various different types of data, it provides the ability to work from within the comfort of the environment to interface, interact with various different Big data tools such Storm and hence can easily scale and overcome its memory limitations. 
+
+
 
 ##Snapshots
 
