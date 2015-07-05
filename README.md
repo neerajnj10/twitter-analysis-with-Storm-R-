@@ -11,7 +11,8 @@ R is an extremely valuable language and a gift to the world of Big Data. Apart f
 
 > **Wordcloud**
 
-![wordcloud](https://cloud.githubusercontent.com/assets/11197322/8509053/b9a79c08-225a-11e5-9ac8-a777758025d4.png?raw=true "wordcloud")
+
+![wordcloud](https://cloud.githubusercontent.com/assets/11197322/8513101/c09e2ad2-232b-11e5-984a-c69492f02253.png?raw=true "wordcloud")
 
 
 
