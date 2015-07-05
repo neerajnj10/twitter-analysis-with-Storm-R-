@@ -71,10 +71,10 @@ secret, and tokens:
 
 
 ```{r Authorize, eval = FALSE}
-consumer.key <- 'B85sJbS9MqCun9J08izFThSAm'
-consumer.secret <- 'QlKjVlbT7iroL4bkfvrBcv5XBTrkwce9jceH0RgHk16cWhif42'
-access.token <- '2983706704-mWmUWbqpYClDYCy9HLvQeQLZ351Pylt18EBf7PM'
-access.secret <- '3Rx7YUxQ1OjDLfEuDDha1Meuo0MkC2PDvvmwjh6hH0CK9'
+consumer.key <- '**'
+consumer.secret <- '**'
+access.token <- '**'
+access.secret <- '**'
 setup_twitter_oauth(consumer.key, consumer.secret,
                     access.token, access.secret)
 ```
