@@ -98,6 +98,7 @@ Bolt | Uses
 `get.polarity()` | Classify polarity of a tweet (negative, positive , neutral)
 `track.polarity()` | Track percentage of positive/negative/neutral tweets over time
 `store.words.polarity()` | Store words for each polarity level
+`unique.median` | collect and send the median value of unique words(collectively for all the tweets) over a given time.
 
 We will need the following hashes and trackers to calculate and track our results:
 
@@ -110,6 +111,7 @@ We will need the following hashes and trackers to calculate and track our result
 `prop.df` | Tracker | Track percentage of each polarity over time
 `polarity.df` | Hash | Store word counts per polarity (term document matrix)
 `polar.words.df` | Hash | Keep track of words associated with each polarity
+`uniques.df` | Tracker | Track the given values for our requirements.
 
 ### The Spout
 The `data.frame` `tweet.df` will be used to simulate tweets arriving in realtime.  
@@ -333,6 +335,22 @@ store.words.polarity <- function(tuple, ...){
 topo <- AddBolt(topo, Bolt(store.words.polarity, listen = 6, boltID = 8))
 ```
 
+## Lets run the median number for unique words over given time. Tracker is `uniques.df`
+
+
+```{r unique.median}
+
+unique.median <- function(tuple, ...){
+  unique.words <- median(length(unique(unlist(strsplit(tuple$text, " ")))))
+  #Emit(Tuple(data.frame(uniques = unique.words, t.stamp = tuple$t.stamp)), ...)
+  TrackRow("uniques.df", data.frame(uniques = unique.words, t.stamp = tuple$t.stamp))
+}
+topo <- AddBolt(topo, Bolt(unique.median, listen = 4, boltID = 9))
+```
+
+
+
+
 ## Running the Topology
 Now that our bolts are created and added to the topology, we can run the simulation.  Note that, depending on how many tweets you pulled and your processor speed, this may take several minutes.
 
@@ -383,6 +401,15 @@ ggplot(prop.df.long, aes(x = t.stamp, y = Proportion, color = Polarity)) +
 tpm.df <- GetTrack("tpm.df", result)
 ggplot(tpm.df, aes(x = t.stamp, y = tpm)) + 
     geom_line() + geom_smooth(se = FALSE, linetype = "dashed", size = 1.5)
+```
+
+### median unique words over time plot
+
+
+```{r median.plot}
+uniques.df <- GetTrack("uniques.df", result)
+ggplot(uniques.df, aes(x= t.stamp, y=uniques))+ geom_point(shape=5, color="darkgreen")+
+  geom_smooth(method="lm") 
 ```
 
 ```{r stringsAsFactors_TRUE}
