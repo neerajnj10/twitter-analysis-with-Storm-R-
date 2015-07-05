@@ -1,5 +1,4 @@
-##this is the code for the project in simple markdown
-##this is the code for the project in simple markdown
+#this is the code for the project in simple markdown
 streaming framework for analyzing tweets for a given topic
 
 We will:
