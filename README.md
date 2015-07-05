@@ -28,3 +28,8 @@ R is an extremely valuable language and a gift to the world of Big Data. Apart f
 > **polarity proportions**
 
 ![polarity](https://cloud.githubusercontent.com/assets/11197322/8509056/c8cc494a-225a-11e5-9796-dddd55abaf4d.png?raw=true "polarity")
+
+
+> **median over time**
+
+![median](https://cloud.githubusercontent.com/assets/11197322/8513075/1bc8fc76-232b-11e5-868f-8e425fa9be33.png?raw=true?raw=true "median") 
