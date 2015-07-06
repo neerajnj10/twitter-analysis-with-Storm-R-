@@ -1,7 +1,8 @@
 # twitter-analysis-with-Storm-R-
 
 
-Storm + R = Real time analysis of fast and streaming data 
+*Storm + R = Real time analysis of fast and streaming data* 
+
 This is Prototype of Storm using R, (which then can be passed for production)
 
 > Realtime Computation with RStorm and twitteR
